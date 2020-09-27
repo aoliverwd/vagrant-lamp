@@ -34,10 +34,6 @@ Vagrant.configure("2") do |config|
   # using a specific IP.
   config.vm.network "private_network", ip: "192.168.33.10"
 
-  config.dns.tld = "local"
-  config.vm.hostname = "local"
-  config.dns.patterns = [/^(\w+\.)my-project.local$/, /^my-project.local$/]
-
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
