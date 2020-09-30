@@ -14,6 +14,10 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "bento/ubuntu-20.04"
 
+  # Install plugins
+  # https://github.com/agiledivider/vagrant-hostsupdater
+  config.vagrant.plugins = ["vagrant-hostsupdater"]
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -33,6 +37,9 @@ Vagrant.configure("2") do |config|
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   config.vm.network "private_network", ip: "192.168.33.10"
+
+  # Set hostname
+  config.vm.hostname = "localdev.local"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -69,4 +76,6 @@ Vagrant.configure("2") do |config|
   # SHELL
   config.vm.provision "shell", path: "install.sh", privileged: false
 
+  # Post message
+  config.vm.post_up_message = "Host: http://localdev.local"
 end
